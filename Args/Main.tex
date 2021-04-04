@@ -1,0 +1,108 @@
+\chapter{命令行参数}
+\section{定义命令行参数}
+
+
+
+
+
+\subsection{短参数}
+
+对于短参数，一般使用:
+\begin{lstlisting}
+	-X[Options]
+	-X后即接参数选项(可选)
+	中间无分隔符
+	
+	短参数不可以合并。如:-D -E 不可写作-DE
+\end{lstlisting}
+
+例如：有D E F三个短参数。
+-D 短参数指定选项OPT。
+\begin{lstlisting}
+	合法的参数形式:
+	-DOPT -E -F
+	
+	非法参数形式:
+	-DEF
+	-D=DOPT -E -F
+	-D=DOPT -EF
+	DEF
+	...
+\end{lstlisting}
+
+
+
+
+
+\subsection{长参数}
+
+对于长参数，一般使用:
+\begin{lstlisting}
+	--XXX[=OPTIONS]
+	如果--XXX后接=，则把=后所有字符视为长参数选项	
+\end{lstlisting}
+
+例如：有--define[=KEY=VALUE]参数:
+\begin{lstlisting}
+	合法的参数形式:
+	--define=Key=Value
+	
+	非法的参数形式:
+	--define:Key=Value
+	--defineKey=Value
+	-define=Key=Value
+	define=Key=Value
+	...
+\end{lstlisting}
+短参数和长参数不必对应。如：
+-D[Key=Value]
+和
+--Define[=Key=Value]
+可以有不同的意义。
+
+
+\section{定义动词参数}
+\subsection{动词参数}
+对于一些动词参数，如：
+\begin{lstlisting}
+	git add
+	apt update
+\end{lstlisting}
+则动词命名使用大驼峰命名法。而且一般情况下只允许存在一个动词参数。
+
+
+\chapter{参数约定}
+
+\section{一些常用参数规定}
+
+\subsection{必选参数}
+
+对于所编写的软件，强制要求拥有以下参数，并且下面的参数不受本标准的命名规则等约束（可以在保留的情况下加入符合本条款的对应选项，即-H和--Help）：
+\begin{lstlisting}
+	-h			打印软件的帮助到标准输出。
+	--help 		同上
+\end{lstlisting}
+并且:如果用户输入了错误的选项，则打印帮助信息。帮助信息的内容要引导用户使用-h 或 --help参数。
+一般情况下，有以上两个选项之一的，就不再进行正常的软件逻辑，忽略其余选项和已经解析过的选项。在打印帮助后即退出软件。
+
+\subsection{参数命名}
+短参数大写。长参数使用大驼峰命名法。如
+\begin{lstlisting}
+	-D
+	-O
+	-E
+	
+	--OutputFile
+	--DebugMode
+	--DefineVariable
+\end{lstlisting}
+
+
+
+\subsection{常见参数释义}
+\begin{lstlisting}
+	--Debug				启动Debug模式
+	--Output[=VALUE]	指定输出
+	--Quiet				启动静默模式
+\end{lstlisting}
+
