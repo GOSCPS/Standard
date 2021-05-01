@@ -3,19 +3,18 @@
 
 对于参数，一般使用:
 \begin{lstlisting}
-	--Xxx[=OPTIONS]
-	如果--Xxx后接=，则把=后所有字符视为长参数选项	
+	-Xxx[=OPTIONS]
+	如果-Xxx后接=，则把=后所有字符视为长参数选项	
 \end{lstlisting}
 
-例如：有--Define[=Key=Value]参数:
+例如：有-Define[=Key=Value]参数:
 \begin{lstlisting}
 	合法的参数形式:
-	--Define=Key=Value
+	-Define=Key=Value
 	
 	非法的参数形式:
 	--Define:Key=Value
-	--DefineKey=Value
-	-Define=Key=Value
+	-DefineKey=Value
 	Define=Key=Value
 	...
 \end{lstlisting}
@@ -27,8 +26,8 @@
 \subsection{动词参数}
 对于一些动词参数，如：
 \begin{lstlisting}
-	git add
-	apt update
+	Git Add
+	Apt Update
 \end{lstlisting}
 动词命名使用大驼峰命名法。而且一般情况下只允许存在一个动词参数。动词参数要求早于任何其他参数传入。
 
@@ -42,20 +41,20 @@
 对于所编写的软件，强制要求拥有以下参数。
 \label{_PARAM_HELP_RULE_}
 \begin{lstlisting}
-	--Help 		打印软件的帮助到标准输出
-	--Version 	打印软件的版本号
+	-Help 		打印软件的帮助到标准输出
+	-Version 	打印软件的版本号
 \end{lstlisting}
-如果用户输入了错误的选项，则打印帮助信息(输出应该同`--Help`参数)。
+如果用户输入了错误的选项，则打印帮助信息(输出应该同`-Help`参数)。
 一般情况下，有以上两个选项之一的，就不再进行正常的软件逻辑，忽略其余选项和已经解析过的选项，在打印后即正常退出软件。
 
 
 \subsection{常见参数释义}
 \begin{lstlisting}
-	--Debug				启动Debug模式
-	--Output[=VALUE]	指定输出
-	--Quiet				启动静默模式
+	-Debug				启动Debug模式
+	-Output[=VALUE]		指定输出
+	-Quiet				启动静默模式
 	
 	如果包含以下参数，那么在执行相应操作后正常退出程序。忽略已解析和未解析的其他参数。
-	--Info 				打印软件详细信息,一般包括（版本号，许可证，和其他必要信息）
+	-Info 				打印软件详细信息,一般包括（版本号，许可证，和其他必要信息）
 \end{lstlisting}
 
